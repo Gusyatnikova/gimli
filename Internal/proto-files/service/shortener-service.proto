@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package domain;
+option go_package = "gimli/internal/gRPC/domain";
+
+service Shortener {
+  rpc Create(FullURL) returns (ShortPath);
+  rpc Get(ShortPath) returns (FullURL);
+}
+
+message FullURL {
+  string url = 1;
+}
+
+message ShortPath {
+  string path = 1;
+}
